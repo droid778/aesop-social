@@ -27,7 +27,7 @@ function aesop_voting_post_local(App $a, array &$b) {
         $item['deny_federation'] = true;
 
         // Send post to Python voting service
-        $url = "http://localhost:5001/vote";
+        $url = "http://voting-service:5001/vote";
         $data = json_encode([
             'post_id' => $item['id'],
             'content' => $item['body'],

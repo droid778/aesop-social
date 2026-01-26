@@ -27,6 +27,17 @@ def get_conn():
 @app.route('/vote', methods=['POST'])
 def add_post():
     data = request.get_json()
+    
+    # Validate required fields
+    if not data:
+        return jsonify({'error': 'No JSON data provided'}), 400
+    
+    required_fields = ['post_id', 'content', 'author']
+    missing_fields = [field for field in required_fields if field not in data]
+    
+    if missing_fields:
+        return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
+    
     post_id = str(data['post_id'])
     content = data['content']
     author = data['author']

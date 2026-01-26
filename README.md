@@ -1,6 +1,20 @@
-# Getting Started
+# Aesop Social 
 
-Social Media is a giant monolithic echo chamber, full of dangerous misinformation.  I think a better solution is a number of smaller invite-only echo chambers filled with subject matter experts.  The echo chambers can be federated as you like to join the chambers together.  At any point you can snip off a part of the network that becomes toxic.
+A social media experiment.  
+
+- Simple.  Very hard to hide anything nefarious.
+- Open source.  Easy to audit for anyone with basic skills.
+- Maintained.  If you find issues, raise one in github.
+- Self hosted.  Easy to install and configure.  
+- Self moderated.  Reflects your values.
+- Invite-only.  Hardened to external influence.
+- Small.  Manageable sized groups (less than 500) and meaningful voting.
+- Public.  Your values and reasoning on display.
+- Common languages.  Large skillbase.
+- Existing infrastructure. Friendica has iphone apps and federates with mastadon.
+- Scales horizontally.  If you want more users, spin up another instance and federate.
+
+# Getting Started
 
 Aesop Social is designed to scale to 1000 users.  It likes to live on a VPS with around 4GB RAM, 2 vCPUs, 100GB disk space.  Current pricing puts this at about a fish and chip dinner a month in running costs.  
 
@@ -18,7 +32,7 @@ copy / paste the credentials:
 
 MYSQL_ROOT_PASSWORD=strong-password-here
 
-MYSQL_PASSWORD=strong-password-here
+MYSQL_PASSWORD=strong-password-here 
 
 FRIENDICA_ADMIN_EMAIL=email@address.com 
 

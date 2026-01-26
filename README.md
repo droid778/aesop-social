@@ -16,8 +16,10 @@ cat > .env
 
 copy / paste the credentials:
 
-MYSQL_ROOT_PASSWORD=strong-password-here 
+MYSQL_ROOT_PASSWORD=strong-password-here
+
 MYSQL_PASSWORD=strong-password-here
+
 FRIENDICA_ADMIN_EMAIL=email@address.com 
 
 Ctrl-D to save / exit

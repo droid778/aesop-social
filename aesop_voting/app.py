@@ -71,8 +71,10 @@ def vote(post_id):
         return jsonify({'error': 'No JSON data provided'}), 400
     
     direction = data.get('direction')
-    if direction is None or direction not in ['up', 'down']:
-        return jsonify({'error': 'Invalid or missing direction'}), 400
+    if direction is None:
+        return jsonify({'error': 'Missing direction field'}), 400
+    if direction not in ['up', 'down']:
+        return jsonify({'error': 'Invalid direction value'}), 400
 
     conn = get_conn()
     c = conn.cursor()

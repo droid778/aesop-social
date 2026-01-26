@@ -1,6 +1,6 @@
 <?php
 /**
- * Local Voting Add-on for Friendica
+ * Aesop Voting Add-on for Friendica
  * Marks voting posts local-only and fetches results from Python service
  */
 
@@ -51,7 +51,7 @@ function aesop_voting_addon_settings(App $a, array &$b) {
         return;
     }
 
-    $o = '<h3>Local Voting Settings</h3>';
+    $o = '<h3>Aesop Voting Settings</h3>';
     $o .= '<p>Voting service URL (default: http://localhost:5001)</p>';
     $b['addon_settings'] .= $o;
 }

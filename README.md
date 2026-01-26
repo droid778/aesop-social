@@ -11,7 +11,7 @@ A social media experiment.
 - Small.  Manageable sized groups (less than 500) and meaningful voting.
 - Public.  Your values and reasoning on display.
 - Common languages.  Large skillbase.
-- Existing infrastructure. Friendica has iphone apps and federates with mastadon.
+- Existing infrastructure. Friendica has iphone apps and federates with Mastodon.
 - Scales horizontally.  If you want more users, spin up another instance and federate.
 
 # Getting Started

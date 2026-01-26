@@ -16,14 +16,14 @@ cat > .env
 
 copy / paste the credentials:
 
-# Database credentials 
 MYSQL_ROOT_PASSWORD=strong-password-here
 MYSQL_PASSWORD=strong-password-here 
-
-# Friendica admin email 
 FRIENDICA_ADMIN_EMAIL=email@address.com 
 
 Ctrl-D to save / exit
+
+You must use strong passwords for security and a real email address for federation to work.  Don't commit the .env file.
+
 
 8. chmod 600
 9. umask 022

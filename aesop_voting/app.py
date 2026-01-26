@@ -42,7 +42,10 @@ def add_post():
     empty_fields = []
     for field in required_fields:
         value = data[field]
-        if value is None or (isinstance(value, str) and value.strip() == ''):
+        # Check for None or empty strings (post_id can be numeric, content and author should be strings)
+        if value is None:
+            empty_fields.append(field)
+        elif isinstance(value, str) and value.strip() == '':
             empty_fields.append(field)
     
     if empty_fields:

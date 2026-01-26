@@ -65,6 +65,7 @@ services:
       - "5001"
     volumes:
       - ./aesop_voting:/app
+      - voting_data:/data
     command: python app.py
 volumes:
   aesop_social_data:
@@ -72,6 +73,7 @@ volumes:
   redis_data:
   caddy_data:
   caddy_config:
+  voting_data:
 
 networks:
   aesop-net:

@@ -3,7 +3,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-DB_PATH = 'votes.db'
+DB_PATH = '/data/votes.db'
 
 # Initialize DB
 if not os.path.exists(DB_PATH):

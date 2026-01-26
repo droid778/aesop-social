@@ -1,0 +1,4 @@
+<?php
+/**
+ * Replacebook theme
+ */

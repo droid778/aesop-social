@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: friendica
+      MYSQL_USER: friendica
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - aesop_social_db:/var/lib/mysql
+    stop_grace_period: 10s
+  aesop-social:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - aesop_social_data:/var/www/html
+    environment:
+      FRIENDICA_DB_HOST: db
+      FRIENDICA_DB_NAME: friendica
+      FRIENDICA_DB_USER: friendica
+      FRIENDICA_DB_PASSWORD: ${MYSQL_PASSWORD}
+      FRIENDICA_ADMIN_EMAIL: ${FRIENDICA_ADMIN_EMAIL}
+      FRIENDICA_TZ: UTC
+      FRIENDICA_REDIS_URL: redis://redis:6379
+    stop_grace_period: 10s
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - aesop-social
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    stop_grace_period: 10s
+volumes:
+  aesop_social_data:
+  aesop_social_db:
+  redis_data:
+  caddy_data:
+  caddy_config:

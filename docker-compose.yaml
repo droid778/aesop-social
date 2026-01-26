@@ -2,6 +2,8 @@ services:
   db:
     image: mariadb:10.11
     restart: unless-stopped
+    networks:
+      - aesop-net
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: friendica
@@ -15,11 +17,16 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     restart: unless-stopped
+    networks:
+      - aesop-net
     depends_on:
       - db
       - redis
     volumes:
       - aesop_social_data:/var/www/html
+      - ./overlay/addons:/var/www/html/addon/custom
+      - ./overlay/config:/var/www/html/config/custom
+      - ./overlay/theme:/var/www/html/view/theme/custom
     environment:
       FRIENDICA_DB_HOST: db
       FRIENDICA_DB_NAME: friendica
@@ -34,6 +41,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - aesop-net
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
@@ -43,12 +52,26 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
+    networks:
+      - aesop-net
     volumes:
       - redis_data:/data
     stop_grace_period: 10s
+  voting-service:
+    build: ./aesop_voting
+    networks:
+      - aesop-net
+    expose:
+      - "5001"
+    volumes:
+      - ./aesop_voting:/app
+    command: python app.py
 volumes:
   aesop_social_data:
   aesop_social_db:
   redis_data:
   caddy_data:
   caddy_config:
+
+networks:
+  aesop-net:

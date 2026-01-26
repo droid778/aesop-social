@@ -12,5 +12,8 @@ return [
         'default_theme' => 'aesop',
         'register_policy' => \Friendica\Module\Register::APPROVE,
         'invite_only' => true,
-    ]
+    ],
+    'addon' => [
+    'aesop_voting' => 1,
+    ],
 ];

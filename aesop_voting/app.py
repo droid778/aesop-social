@@ -38,6 +38,12 @@ def add_post():
     if missing_fields:
         return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
     
+    # Validate that fields are not empty or null
+    empty_fields = [field for field in required_fields if not data[field]]
+    
+    if empty_fields:
+        return jsonify({'error': f'Fields cannot be empty: {", ".join(empty_fields)}'}), 400
+    
     post_id = str(data['post_id'])
     content = data['content']
     author = data['author']
@@ -53,6 +59,10 @@ def add_post():
 @app.route('/vote/<post_id>', methods=['POST'])
 def vote(post_id):
     data = request.get_json()
+    
+    if not data:
+        return jsonify({'error': 'No JSON data provided'}), 400
+    
     direction = data.get('direction')
     if direction not in ['up', 'down']:
         return jsonify({'error': 'Invalid direction'}), 400

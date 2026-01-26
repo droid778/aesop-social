@@ -9,7 +9,8 @@ Aesop Social is designed to scale to 1000 users.  It likes to live on a VPS with
 3. sudo apt install docker docker-compose libnss3-tools
 4. Clone the repo
 5. cd aesop-social
-6. Add a .env file containing the passwords.  This is excluded purposefully to prevent password reuse.  The easiest way is to copy / paste this into a text editor (one that doesn't have AI features, like sublime text).  Then edit the passwords (KeypassXC has a good keygen, click the dice).  Then in a terminal:
+6. umask 077
+7. Add a .env file containing the passwords.  This is excluded purposefully to prevent password reuse.  The easiest way is to copy / paste this into a text editor (one that doesn't have AI features, like sublime text).  Then edit the passwords (KeypassXC has a good keygen, click the dice).  Then in a terminal:
 
 cat > .env
 
@@ -24,5 +25,7 @@ FRIENDICA_ADMIN_EMAIL=email@address.com
 
 Ctrl-D to save / exit
 
-3. docker-compose up -d
+8. chmod 600
+9. umask 022
+10. docker-compose up -d
 

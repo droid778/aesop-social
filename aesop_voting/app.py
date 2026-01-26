@@ -39,7 +39,11 @@ def add_post():
         return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
     
     # Validate that fields are not empty or null
-    empty_fields = [field for field in required_fields if data[field] is None or str(data[field]).strip() == '']
+    empty_fields = []
+    for field in required_fields:
+        value = data[field]
+        if value is None or (isinstance(value, str) and value.strip() == ''):
+            empty_fields.append(field)
     
     if empty_fields:
         return jsonify({'error': f'Fields cannot be empty: {", ".join(empty_fields)}'}), 400
@@ -64,7 +68,7 @@ def vote(post_id):
         return jsonify({'error': 'No JSON data provided'}), 400
     
     direction = data.get('direction')
-    if not direction or direction not in ['up', 'down']:
+    if direction is None or direction not in ['up', 'down']:
         return jsonify({'error': 'Invalid or missing direction'}), 400
 
     conn = get_conn()

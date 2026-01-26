@@ -6,17 +6,17 @@
 
 use Friendica\App;
 
-function local_voting_install() {
-    register_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'local_voting_post_local');
-    register_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'local_voting_addon_settings');
+function aesop_voting_install() {
+    register_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_post_local');
+    register_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_addon_settings');
 }
 
-function local_voting_uninstall() {
-    unregister_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'local_voting_post_local');
-    unregister_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'local_voting_addon_settings');
+function aesop_voting_uninstall() {
+    unregister_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_post_local');
+    unregister_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_addon_settings');
 }
 
-function local_voting_post_local(App $a, array &$b) {
+function aesop_voting_post_local(App $a, array &$b) {
     $item = &$b['item'];
 
     if (isset($item['post_type']) && $item['post_type'] === 'voting') {
@@ -46,7 +46,7 @@ function local_voting_post_local(App $a, array &$b) {
     }
 }
 
-function local_voting_addon_settings(App $a, array &$b) {
+function aesop_voting_addon_settings(App $a, array &$b) {
     if (!local_user()) {
         return;
     }

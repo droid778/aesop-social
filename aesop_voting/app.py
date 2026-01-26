@@ -68,4 +68,4 @@ def results(post_id):
     return jsonify({'upvotes': 0, 'downvotes': 0})
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5001, debug=False)

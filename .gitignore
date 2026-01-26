@@ -1,5 +1,10 @@
 .env
 .env.local
 .env.*.local
+
+# Python
 __pycache__/
-*.db
+*.py[cod]
+*$py.class
+*.so
+.Python

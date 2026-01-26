@@ -3,7 +3,7 @@ FROM friendica:latest
 COPY overlay/theme/aesop /var/www/html/view/theme/aesop
 COPY overlay/static/logo.svg /var/www/html/images/logo.svg
 COPY overlay/config/aesop.config.php /var/www/html/config/aesop.config.php
-COPY overlay/addons/* /var/www/html/addons/
+COPY overlay/addons/* /var/www/html/addon/custom/
 
 LABEL org.opencontainers.image.title="Aesop Social"
 LABEL org.opencontainers.image.description="Aesop Social: a federated social network based on Friendica"

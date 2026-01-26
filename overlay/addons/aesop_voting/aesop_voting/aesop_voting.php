@@ -1,22 +1,22 @@
 <?php
 /**
- * Local Voting Add-on for Friendica
+ * Aesop Voting Add-on for Friendica
  * Marks voting posts local-only and fetches results from Python service
  */
 
 use Friendica\App;
 
-function local_voting_install() {
-    register_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'local_voting_post_local');
-    register_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'local_voting_addon_settings');
+function aesop_voting_install() {
+    register_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_post_local');
+    register_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_addon_settings');
 }
 
-function local_voting_uninstall() {
-    unregister_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'local_voting_post_local');
-    unregister_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'local_voting_addon_settings');
+function aesop_voting_uninstall() {
+    unregister_hook('post_local', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_post_local');
+    unregister_hook('addon_settings', 'addon/aesop_voting/aesop_voting.php', 'aesop_voting_addon_settings');
 }
 
-function local_voting_post_local(App $a, array &$b) {
+function aesop_voting_post_local(App $a, array &$b) {
     $item = &$b['item'];
 
     if (isset($item['post_type']) && $item['post_type'] === 'voting') {
@@ -27,7 +27,7 @@ function local_voting_post_local(App $a, array &$b) {
         $item['deny_federation'] = true;
 
         // Send post to Python voting service
-        $url = "http://localhost:5001/vote";
+        $url = "http://voting-service:5001/vote";
         $data = json_encode([
             'post_id' => $item['id'],
             'content' => $item['body'],
@@ -46,12 +46,12 @@ function local_voting_post_local(App $a, array &$b) {
     }
 }
 
-function local_voting_addon_settings(App $a, array &$b) {
+function aesop_voting_addon_settings(App $a, array &$b) {
     if (!local_user()) {
         return;
     }
 
-    $o = '<h3>Local Voting Settings</h3>';
+    $o = '<h3>Aesop Voting Settings</h3>';
     $o .= '<p>Voting service URL (default: http://localhost:5001)</p>';
     $b['addon_settings'] .= $o;
 }

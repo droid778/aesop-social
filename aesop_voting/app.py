@@ -3,7 +3,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-DB_PATH = 'votes.db'
+DB_PATH = '/data/votes.db'
 
 # Initialize DB
 if not os.path.exists(DB_PATH):
@@ -98,4 +98,4 @@ def results(post_id):
     return jsonify({'upvotes': 0, 'downvotes': 0})
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5001, debug=False)

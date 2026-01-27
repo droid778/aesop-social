@@ -1,7 +1,7 @@
-:80 {
-	redir https://{host}{uri}
+aesop-social.uk:443 {
+	reverse_proxy aesop-social:80
 }
 
-:443 {
-	reverse_proxy aesop-social:80
+:80 {
+	redir https://{host}{uri}
 }

@@ -37,6 +37,7 @@ services:
       FRIENDICA_REDIS_URL: redis://redis:6379
       FRIENDICA_URL: https://aesop-social.uk
       HTTPS: "on"
+    entrypoint: /bin/bash -c "/usr/local/bin/install-friendica.sh && exec /entrypoint.sh apache2-foreground"
     stop_grace_period: 10s
   caddy:
     image: caddy:2

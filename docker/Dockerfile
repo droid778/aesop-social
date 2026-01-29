@@ -1,9 +1,7 @@
 FROM friendica:latest
 
-COPY overlay/theme/aesop /var/www/html/view/theme/aesop
-COPY overlay/static/logo.svg /var/www/html/images/logo.svg
 COPY overlay/config/aesop.config.php /var/www/html/config/aesop.config.php
-COPY overlay/addons/* /var/www/html/addon/custom/
+COPY overlay/static/logo.svg /var/www/html/images/logo.svg
 COPY overlay/apache-proxy.conf /etc/apache2/conf-available/proxy.conf
 COPY overlay/install-friendica.sh /usr/local/bin/install-friendica.sh
 

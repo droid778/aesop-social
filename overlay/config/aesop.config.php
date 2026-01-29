@@ -14,9 +14,10 @@ return [
         'invite_only' => true,
         'behind_proxy' => true,
         'proxy_user_headers' => true,
-        'ssl_policy' => 1, // SSL_POLICY_FULL - enforce HTTPS
+        'ssl_policy' => 1,
         'force_ssl' => true,
         'url' => 'https://aesop-social.uk',
+        'base_path' => '/var/www/html',
     ],
     'addon' => [
     'aesop_voting' => 1,

@@ -1,5 +1,5 @@
 aesop-social.uk {
-	reverse_proxy aesop-social:80 {
+	reverse_proxy aesop-social.uk:443 {
 		header_up X-Forwarded-Proto https
 		header_up X-Real-IP {remote_host}
 	}

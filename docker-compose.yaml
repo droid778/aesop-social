@@ -36,7 +36,7 @@ services:
       FRIENDICA_TZ: UTC
       FRIENDICA_REDIS_URL: redis://redis:6379
       FRIENDICA_URL: https://aesop-social.uk
-      HTTPS: on
+      HTTPS: "on"
     stop_grace_period: 10s
   caddy:
     image: caddy:2

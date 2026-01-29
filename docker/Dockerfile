@@ -6,6 +6,8 @@ COPY overlay/apache-proxy.conf /etc/apache2/conf-available/proxy.conf
 COPY overlay/install-friendica.sh /usr/local/bin/install-friendica.sh
 
 RUN a2enmod remoteip setenvif && a2enconf proxy && \
+    echo "ServerName aesop-social.uk" > /etc/apache2/conf-available/servername.conf && \
+    a2enconf servername && \
     chmod +x /usr/local/bin/install-friendica.sh && \
     apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
 

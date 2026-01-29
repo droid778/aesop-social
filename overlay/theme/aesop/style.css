@@ -1,0 +1,114 @@
+/* Commons – calm, collective, federation-first */
+
+:root {
+  --bg-main: #f6f7f5;
+  --bg-card: #ffffff;
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+  --accent: #4f6f64; /* calm activist green */
+  --border-soft: #e5e7eb;
+}
+
+/* Base */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+/* Top navigation */
+nav, .topbar {
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Feed container */
+.wall-item-container,
+.item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.2rem;
+}
+
+/* Author info – de-emphasised */
+.wall-item-author,
+.author {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.wall-item-author a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Federation awareness */
+.author a[href*="@"]::after {
+  content: " ⦿";
+  color: var(--accent);
+  font-size: 0.8em;
+}
+
+/* Timestamps */
+.wall-item-ago,
+.timestamp {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Post content */
+.wall-item-content {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Links – clear, not shouty */
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Link previews */
+.shared-wrapper {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.8rem;
+  margin-top: 0.8rem;
+  background: #fafafa;
+}
+
+/* Reactions – intentionally quiet */
+.wall-item-actions,
+.like,
+.dislike,
+.share {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.wall-item-actions:hover {
+  opacity: 1;
+}
+
+/* Hide engagement counters if desired */
+.wall-item-likes,
+.wall-item-dislikes {
+  display: none;
+}
+
+/* Compose box */
+#profile-jot-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+}
+
+/* No algorithmic pressure */
+.trending,
+.suggested,
+.popular {
+  display: none;
+}

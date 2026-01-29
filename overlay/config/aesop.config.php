@@ -9,7 +9,7 @@
 return [
     'system' => [
         'sitename' => 'Aesop Social',
-        'default_theme' => 'aesop',
+        'default_theme' => 'custom/aesop',
         'register_policy' => \Friendica\Module\Register::APPROVE,
         'invite_only' => true,
         'behind_proxy' => true,

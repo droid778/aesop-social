@@ -5,6 +5,4 @@
 
 return [
     'inherit' => 'frio',
-    'extends' => ['frio'],
-    'stylesheet' => 'style.css',
 ];
